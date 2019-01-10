@@ -1,0 +1,25 @@
+﻿
+@model CyberAcademy1.Models.CyberModel
+
+
+@{
+    string filepath = "~/uploads/";
+    int cyberId = Model.CyberId;
+    String FileName = Model.NYSCFileName;
+    //filepath = filepath + @Model.NYSC_upload;
+    filepath = filepath + cyberId + "_" + @Model.NYSCFileName;
+
+   // string path = Path.Combine(Server.MapPath("~/App_Data/uploads"), cyberId + "_" + FileName);
+   <div class="row">
+       <div id=@Model.CyberId class="col-md-3">
+           <div width="20%" height="5">
+
+               <img src="@Url.Content(filepath)" alt="@Model.NYSCFileName" />
+           </div>
+           <div>@Model.LastName <span>@Model.OtherNames </span> </div>
+
+       </div>
+   </div>
+    
+
+}

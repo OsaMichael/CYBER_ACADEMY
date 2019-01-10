@@ -1,0 +1,234 @@
+﻿@model CyberAcademy1.Models.CyberModel
+
+@{
+    ViewBag.Title = "CreateCyber";
+}
+
+@*<h2>Create CyberAcademy</h2>*@
+
+<h1></h1>
+<h1></h1>
+<h1></h1>
+<div class="card-body" id="bar-parent">
+    <form action="CreateCyber" method="Post" id="form_sample_1" class="form-horizontal" novalidate="novalidate" enctype="multipart/form-data">
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        <div class="form-body">
+            <div class="form-group row">
+                <label class="control-label col-md-3">
+                    First Name
+                </label>
+                <div class="col-md-12">
+                    @*@Html.TextBoxFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "enter new item" } })*@
+                    @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", @placeholder = "enter your full name" })
+
+                    @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+
+                    @*@Html.TextBox("CustomarName", null, new { @class = "form-control", @placeholder = "Search With Customar Name" })*@
+                    @*@Html.TextBoxFor(m => m.Listing.Location.AddressLine1, new { @placeholder = "Address Line 1 - Required" })*@
+                </div>
+
+
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-md-3">
+                    Last Name
+                </label>
+                <div class="col-md-12">
+                    @*@Html.TextBoxFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "enter new item" } })*@
+                    @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", @placeholder = "enter your full name" })
+
+                    @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+                    @*@Html.TextBox("CustomarName", null, new { @class = "form-control", @placeholder = "Search With Customar Name" })*@
+                    @*@Html.TextBoxFor(m => m.Listing.Location.AddressLine1, new { @placeholder = "Address Line 1 - Required" })*@
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-md-3">
+                    Other Names
+                </label>
+                <div class="col-md-12">
+                    @*@Html.TextBoxFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "enter new item" } })*@
+                    @Html.TextBoxFor(model => model.OtherNames, new { @class = "form-control", @placeholder = "enter your full name" })
+
+                    @Html.ValidationMessageFor(m => m.OtherNames, "", new { @class = "text-danger" })
+                    @*@Html.TextBox("CustomarName", null, new { @class = "form-control", @placeholder = "Search With Customar Name" })*@
+                    @*@Html.TextBoxFor(m => m.Listing.Location.AddressLine1, new { @placeholder = "Address Line 1 - Required" })*@
+                </div>
+
+
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-md-3">
+                    Gender
+                    @*<span class="required" aria-required="true"> * </span>*@
+                </label>
+                <div class="col-md-12">
+                    <select id="gender" name="gender" class="form-control">
+                        <option value="">Select gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+
+                    </select>
+                </div>
+            </div>
+            @*<div class="form-group row">
+                <label class="control-label col-md-3">
+                    Gender
+                    @*<span class="required" aria-required="true"> * </span>*@
+            @*</label>
+                    <div class="col-md-12">
+                        @Html.TextBoxFor(model => model.Gender, new { @class = "form-control", @placeholder = "enter gender" })
+                        @Html.ValidationMessageFor(m => m.Gender, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+            <div class="form-group row">
+                <label class="control-label col-md-3">
+                    Date of birth
+                    @*<span class="required" aria-required="true"> * </span>*@
+                </label>
+                <div class="col-md-12">
+                    <input type="date" name="DateOfBirth" class="form-control" value="dd/MM/yyyy" />
+                    @Html.ValidationMessageFor(m => m.DateOfBirth, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-md-3">
+                    Address
+                </label>
+                <div class="col-md-12">
+                    @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @placeholder = "enter address" })
+                    @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-md-3">
+                    Email
+                </label>
+                <div class="col-md-12">
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "enter email" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-md-3">
+                    School Attended
+                    @*<span class="required" aria-required="true"> * </span>*@
+                </label>
+                <div class="col-md-12">
+                    @Html.DropDownListFor(m => m.HigherId, (IEnumerable<SelectListItem>)ViewBag.higher_inst, new { @class = "form-control" })
+                    @*<div>
+                        <h5>Others</h5>
+                        <input type="text" name="Instit_Name"/>
+                    </div>*@
+                   
+                   
+                    @*@Html.TextBoxFor(model => model.SchoolAttended, new { @class = "form-control", @placeholder = "enter school attended" })*@
+                    @Html.ValidationMessageFor(m => m.HigherId, "", new { @class = "text-danger" })
+
+                </div>
+              
+            </div>
+
+            <div class="form-group row">
+                <label class="control-label col-md-3">
+                    Course Of Study
+                    <span class="required" aria-required="true">  </span>
+                </label>
+                <div class="col-md-12">
+                    @Html.DropDownListFor(m => m.CourseId, (IEnumerable<SelectListItem>)ViewBag.courseOfdies, new { @class = "form-control" })
+                    @*@Html.TextBoxFor(model => model.CourseOfStudy, new { @class = "form-control", @placeholder = "enter course of study" })*@
+                    @Html.ValidationMessageFor(m => m.CourseId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label class="control-label col-md-3">
+                    Class Of Digree
+                    @*<span class="required" aria-required="true"> * </span>*@
+                </label>
+                <div class="col-md-12">
+                    @Html.TextBoxFor(model => model.ClassOfDigree, new { @class = "form-control", @placeholder = "enter class of digree" })
+                    @Html.ValidationMessageFor(m => m.ClassOfDigree, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-md-3">
+                    Year Of Graduation
+                    @*<span class="required" aria-required="true"> * </span>*@
+                </label>
+                <div class="col-md-12">
+                    @Html.TextBoxFor(model => model.YearOfGraduation, new { @class = "form-control", @placeholder = "enter year of graduation" })
+                    @Html.ValidationMessageFor(m => m.YearOfGraduation, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            @*<div class="form-group row">
+                <label class="control-label col-md-3">
+                    Upload NYSC certificate
+                    @*<span class="required" aria-required="true"> * </span>*@
+            @*</label>*@
+            @*<div class="col-md-12">
+                    @Html.TextBoxFor(model => model.NYSC_upload, new { @class = "form-control", @placeholder = "upload nysc certificate" })
+                    @Html.ValidationMessageFor(m => m.NYSC_upload, "", new { @class = "text-danger" })
+                </div>*@
+            @*</div>*@
+
+
+            <div class="form-group row">
+                <label class="control-label col-md-3">
+                    Upload NYSC certificate
+                    @*<span class="required" aria-required="true"> * </span>*@
+                </label>
+                <div class="col-md-12">
+                    <label for="file"></label>
+                    <input type="file" name="file" id="file" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="control-label col-md-3">
+                    State Of Origin
+                    @*<span class="required" aria-required="true"> * </span>*@
+                </label>
+                <div class="col-md-12">
+                    @Html.DropDownListFor(m => m.StateId, (IEnumerable<SelectListItem>)ViewBag.states, new { @class = "form-control", @placeholder = "select state of origin" })
+                    @Html.ValidationMessageFor(m => m.StateId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-md-3">
+                    GSM
+                    @*<span class="required" aria-required="true"> * </span>*@
+                </label>
+                <div class="col-md-12">
+                    @Html.TextBoxFor(model => model.Contact, new { @class = "form-control", @placeholder = "enter call line" })
+                    @Html.ValidationMessageFor(m => m.Contact, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-actions">
+                <div class="row">
+                    <div class="offset-md-3 col-md-6 pull-right">
+                        <button type="submit" class="btn btn-info" id="submitData">Save</button>
+                        @*<button type="button" class="btn btn-danger">Cancel</button>*@
+
+                    </div>
+                    <div class="col-md-1">
+                        <a href="@Url.Action("Index","Home", new { area = ""})" class="btn btn-chatpane">Back To List(s)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+@section Scripts {
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-3.0.0.js"></script>
+    <script src="~/Scripts/toastr.js"></script>
+
+}
