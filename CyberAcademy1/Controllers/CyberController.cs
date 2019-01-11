@@ -1,4 +1,5 @@
-﻿using CyberAcademy1.Interface;
+﻿using CyberAcademy1.Entities;
+using CyberAcademy1.Interface;
 using CyberAcademy1.Models;
 using Microsoft.AspNet.Identity;
 using OfficeOpenXml;
@@ -6,8 +7,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+
 
 namespace CyberAcademy1.Controllers
 {
@@ -25,7 +28,9 @@ namespace CyberAcademy1.Controllers
         // GET: Employee
         public ActionResult Index()
         {
+            //was added to pass the data direct
             ViewBag.Profile = context.Cybers.ToList();
+
             if (TempData["message"] != null)
             {
                 ViewBag.Sucess = (string)TempData["message"];
@@ -72,9 +77,31 @@ namespace CyberAcademy1.Controllers
 
         }
 
+        public async Task<FileResult> DownloadImage(int id)
+        {
+            var model = _cybMgr.GetCyberById(id).Result;
+            string filepath = "~/uploads/";
+            int cyberId = model.CyberId;
+            String FileName = model.NYSCFileName;
+            //filepath = filepath + @Model.NYSC_upload;
+            filepath = filepath + cyberId + "_" + model.NYSCFileName;
+            return File(filepath, model.ContentType, model.NYSCFileName
+                );
+        }
 
+        //}
+        //public ActionResult Pdf(int id)
+        //{
+        //    var file = _cybMgr.GetCyberById(id);
 
+        //    var viewAsPdf = new ViewAsPdf("Index", file)
 
+        //    {
+        //        FileName = "StaffProject.pdf"
+        //    };
+
+        //    return viewAsPdf;
+        //}
 
 
         //[Authorize(Roles = "Admin")]
@@ -93,6 +120,18 @@ namespace CyberAcademy1.Controllers
 
                     //  ViewBag.Name = new SelectList(_userMgr.GetRoles().Result, "RoleId", "RoleName");
 
+
+                    if(model.NewCourse != null)
+                    {
+                        model.CourseId = _cybMgr.CreateCourse(model.NewCourse);
+                    }
+
+                    if (model.NewHigher != null)
+                    {
+                        model.HigherId = _cybMgr.CreateHigherInstituion(model.NewHigher);
+                    }
+
+
                     String FileName = "";
                     if (file.ContentLength > 0)
                     {
@@ -105,6 +144,7 @@ namespace CyberAcademy1.Controllers
                     int cyberId = 0;
                     model.CreatedBy = User.Identity.GetUserName();
                     model.NYSCFileName = FileName;
+                    model.ContentType = file.ContentType;
                     var result = _cybMgr.CreateCyber(model,  ref  cyberId);
 
 
@@ -140,7 +180,8 @@ namespace CyberAcademy1.Controllers
 
         public ActionResult Export()
         {
-            var list = _cybMgr.GetCybers();
+            //ViewBag.Profile = context.Cybers.ToList();
+            var list = context.Cybers.ToList();
 
             ExcelPackage pck = new ExcelPackage();
             ExcelWorksheet ws = pck.Workbook.Worksheets.Add("Report");
@@ -152,18 +193,18 @@ namespace CyberAcademy1.Controllers
             ws.Cells["E1"].Value = "DateOfBirth";
             ws.Cells["F1"].Value = "Address ";
             ws.Cells["G1"].Value = "Email";
-            ws.Cells["H1"].Value = "HigherId";
-            ws.Cells["I1"].Value = "CourseId";
+            ws.Cells["H1"].Value = "Higher";
+            ws.Cells["I1"].Value = "Course";
             ws.Cells["J1"].Value = "ClassOfDigree";
             ws.Cells["K1"].Value = "YearOfGraduation";
             ws.Cells["L1"].Value = "NYSCCertificate";
-            ws.Cells["M1"].Value = "StateId";
+            ws.Cells["M1"].Value = "State";
             ws.Cells["N1"].Value = "Contact";
           
       
 
             int rowStart = 2;
-            foreach (var item in list.Result)
+            foreach (var item in list)
             {
                 //converting expireddate format to string 
                 //  var stringDate = item.ExpiringDate;
@@ -172,15 +213,15 @@ namespace CyberAcademy1.Controllers
                 ws.Cells[string.Format("B{0}", rowStart)].Value = item.LastName;
                 ws.Cells[string.Format("C{0}", rowStart)].Value = item.OtherNames;
                 ws.Cells[string.Format("D{0}", rowStart)].Value = item.Gender;
-                ws.Cells[string.Format("E{0}", rowStart)].Value = item.DateOfBirth;
+                ws.Cells[string.Format("E{0}", rowStart)].Value = item.DateOfBirth.ToString();
                 ws.Cells[string.Format("F{0}", rowStart)].Value = item.Address;
                 ws.Cells[string.Format("G{0}", rowStart)].Value = item.Email;
-                ws.Cells[string.Format("H{0}", rowStart)].Value = item.HigherId;
-                ws.Cells[string.Format("I{0}", rowStart)].Value = item.CourseId;
+                ws.Cells[string.Format("H{0}", rowStart)].Value = item.HigherInstitution.Instit_Name;
+                ws.Cells[string.Format("I{0}", rowStart)].Value = item.Course.Course_Name;
                 ws.Cells[string.Format("J{0}", rowStart)].Value = item.ClassOfDigree;
                 ws.Cells[string.Format("K{0}", rowStart)].Value = item.YearOfGraduation;
                 ws.Cells[string.Format("L{0}", rowStart)].Value = item.NYSC_upload;
-                ws.Cells[string.Format("M{0}", rowStart)].Value = item.StateId;
+                ws.Cells[string.Format("M{0}", rowStart)].Value = item.State.State_Name;
                 ws.Cells[string.Format("N{0}", rowStart)].Value = item.Contact;
            
           

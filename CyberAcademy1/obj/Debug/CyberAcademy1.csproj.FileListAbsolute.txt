@@ -98,3 +98,6 @@ c:\Users\Michael\Documents\Visual Studio 2015\Projects\CyberAcademy1\CyberAcadem
 c:\Users\Michael\Documents\Visual Studio 2015\Projects\CyberAcademy1\CyberAcademy1\obj\Debug\CyberAcademy1.pdb
 c:\Users\Michael\Documents\Visual Studio 2015\Projects\CyberAcademy1\CyberAcademy1\obj\Debug\CyberAcademy1.Migrations.ggggggggggggpppppp.resources
 c:\Users\Michael\Documents\Visual Studio 2015\Projects\CyberAcademy1\CyberAcademy1\obj\Debug\CyberAcademy1.Migrations.ggggggggggggppppppp.resources
+C:\Users\Michael\Documents\Visual Studio 2015\Projects\CyberAcademy1\CyberAcademy1\obj\Debug\CyberAcademy1.Migrations.adddddneww.resources
+C:\Users\Michael\Documents\Visual Studio 2015\Projects\CyberAcademy1\CyberAcademy1\obj\Debug\CyberAcademy1.Migrations.adddddnewwlllll.resources
+C:\Users\Michael\Documents\Visual Studio 2015\Projects\CyberAcademy1\CyberAcademy1\obj\Debug\CyberAcademy1.Migrations.ttttttttt.resources

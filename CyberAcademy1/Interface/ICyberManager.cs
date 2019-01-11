@@ -16,5 +16,8 @@ namespace CyberAcademy1.Interface
         Operation<StateModel[]> GetStates();
         Operation<CyberModel> GetCyberById(int cyberId);
         Operation DeleteCyber(int id);
+        int CreateHigherInstituion(string name);
+
+        int CreateCourse(string name);
     }
 }

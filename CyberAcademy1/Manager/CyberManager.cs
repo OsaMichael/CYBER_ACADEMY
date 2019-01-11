@@ -21,7 +21,7 @@ namespace CyberAcademy1.Manager
             //return Operation.Create(() =>
             //{
 
-
+                model.Validate();
                 var isExist = _context.Cybers.Where(e => e.Email == model.Email).FirstOrDefault();
                 if (isExist != null) throw new Exception("email already exist");
 
@@ -106,6 +106,36 @@ namespace CyberAcademy1.Manager
                 return models;
             });
         }
+
+        public int CreateHigherInstituion(string name) { 
+
+
+            var isExist = _context.HigherInstitutions.Where(e => e.Instit_Name == name).FirstOrDefault();
+            if (isExist != null) throw new Exception("Instistion already exist");
+
+            var entity = new HigherInstitution { Instit_Name = name,  HigherId = 0};
+
+            _context.HigherInstitutions.Add(entity);
+
+            var higherInstitutionId = _context.SaveChanges();
+            return entity.HigherId;
+        }
+
+        public int CreateCourse(string name)
+        {
+
+
+            var isExist = _context.CourseOfStudies.Where(e => e.Course_Name == name).FirstOrDefault();
+            if (isExist != null) throw new Exception("course already exist");
+
+            var entity = new CourseOfStudy { Course_Name = name, CourseId = 0 };
+
+            _context.CourseOfStudies.Add(entity);
+
+            var higherInstitutionId = _context.SaveChanges();
+            return entity.CourseId;
+        }
+
         public Operation<CourseOfStudyModel[]> GetCourseOfdies()
         {
             return Operation.Create(() =>

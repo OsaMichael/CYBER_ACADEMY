@@ -34,6 +34,8 @@ namespace CyberAcademy1.Entities
         public string ModifiedBy { get; set; }
         public DateTime? ModifiedDate { get; set; }
         public string NYSCFileName { get; set; }
+   
+        public string ContentType { get; set; }
         public virtual HigherInstitution HigherInstitution { get; set; }
         public virtual CourseOfStudy Course { get; set; }
         public virtual State State { get; set; }

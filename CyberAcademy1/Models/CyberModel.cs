@@ -7,7 +7,7 @@ using System.Web;
 
 namespace CyberAcademy1.Models
 {
-    public class CyberModel
+    public class CyberModel : Model
     {
         //[Key]
         public int CyberId { get; set; }
@@ -18,9 +18,13 @@ namespace CyberAcademy1.Models
         public int? StateId { get; set; }
 
         public string FirstName { get; set; }
+        public string ContentType { get; set; }
         public string LastName { get; set; }
         public string OtherNames { get; set; }
         public string Gender { get; set; }
+        //[Range(1999, 2000,
+        // ErrorMessage = "Applicant age must be between 1991 and 2000")]
+
         public DateTime DateOfBirth { get; set; }
         public string Address { get; set; }
         //public string SchoolAttended { get; set; }
@@ -28,15 +32,18 @@ namespace CyberAcademy1.Models
         public string ClassOfDigree { get; set; }
         public string YearOfGraduation { get; set; }
         public string NYSC_upload { get; set; }
+        [Required]
         public string Email { get; set; }
         //public string State { get; set; }
         public string Contact { get; set; }
+      
         public string Message { get; set; }
         public DateTime? CreatedDate { get; set; }
         public string CreatedBy { get; set; }
         public string ModifiedBy { get; set; }
         public DateTime? ModifiedDate { get; set; }
-
+        public string NewCourse { get; set; }
+        public string NewHigher { get; set; }
         public string NYSCFileName { get; set; }
         //public virtual RoleModel Role { get; set; }
         //public virtual UserModel User { get; set; }
@@ -90,6 +97,7 @@ namespace CyberAcademy1.Models
 
         public Cyber Create(CyberModel model)
         {
+           
             return new Cyber
             {
 
@@ -97,6 +105,7 @@ namespace CyberAcademy1.Models
                 HigherId = model.HigherId,
                 CourseId = model.CourseId,
                 StateId = model.StateId,
+                ContentType = model.ContentType,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 OtherNames = model.OtherNames,
@@ -144,6 +153,14 @@ namespace CyberAcademy1.Models
             entity.ModifiedBy = model.ModifiedBy;
 
             return entity;
+        }
+
+        public virtual IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if ((DateTime.Now.Year - DateOfBirth.Year) <= 18 &&( DateTime.Now.Year - DateOfBirth.Year) > 28 )
+                return new[]
+                { new ValidationResult("Date of Birth must be above 18 years and not more than 28 years of age", new[] { "DateOfBirth" }) };
+            else return base.Validate(validationContext);
         }
     }
 }
