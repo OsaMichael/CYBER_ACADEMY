@@ -16,7 +16,7 @@ namespace CyberAcademy1
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Cyber", action = "CreateCyber", id = UrlParameter.Optional }
             );
         }
     }

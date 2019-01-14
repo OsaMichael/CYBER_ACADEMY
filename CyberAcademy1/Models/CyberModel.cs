@@ -11,32 +11,45 @@ namespace CyberAcademy1.Models
     {
         //[Key]
         public int CyberId { get; set; }
-    
+
         public string UserId { get; set; }
         public int CourseId { get; set; }
         public int? HigherId { get; set; }
         public int? StateId { get; set; }
-
+        [Required]
         public string FirstName { get; set; }
+       
         public string ContentType { get; set; }
+        [Required]
         public string LastName { get; set; }
+        [Required]
         public string OtherNames { get; set; }
+    
         public string Gender { get; set; }
         //[Range(1999, 2000,
         // ErrorMessage = "Applicant age must be between 1991 and 2000")]
+        //[CustomValidation(typeof(ValidationResult), "Validate")]
 
         public DateTime DateOfBirth { get; set; }
+        [Required]
         public string Address { get; set; }
         //public string SchoolAttended { get; set; }
-     
+        [Required]
         public string ClassOfDigree { get; set; }
+        [Required]
+        public string Qualification { get; set; }
+       
+        public string Grade { get; set; }
+        [Required]
         public string YearOfGraduation { get; set; }
+       
         public string NYSC_upload { get; set; }
         [Required]
         public string Email { get; set; }
+        [Required]
         //public string State { get; set; }
         public string Contact { get; set; }
-      
+        public int Age { get; set; }
         public string Message { get; set; }
         public DateTime? CreatedDate { get; set; }
         public string CreatedBy { get; set; }
@@ -70,34 +83,18 @@ namespace CyberAcademy1.Models
             Course = new CourseOfStudyModel();
             State = new StateModel();
             User = new ApplicationUser();
-            //HigherId = cyber.HigherId;
-            //CourseId = cyber.CourseId;
-            //StateId = cyber.StateId;
-            //FirstName = cyber.FirstName;
-            //LastName = cyber.LastName;
-            //OtherNames = cyber.OtherNames;
-            //Address = cyber.Address;
-            //ClassOfDigree = cyber.ClassOfDigree;
-            //Contact = cyber.Contact;
-
-            //DateOfBirth = cyber.DateOfBirth;
-            //Email = cyber.Email;
-            //Gender = cyber.Gender;
-            //NYSC_upload = cyber.NYSC_upload;
-            ////SchoolAttended = model.SchoolAttended,
-            ////State = model.State,
-            //YearOfGraduation = cyber.YearOfGraduation;
-            //CreatedDate = DateTime.Now;
-            //CreatedBy = cyber.CreatedBy;
-
-
-
 
         }
 
         public Cyber Create(CyberModel model)
         {
-           
+            int age = 0;
+            DateTime currentDate = DateTime.Now;
+            DateTime dob = Convert.ToDateTime(model.DateOfBirth);
+            age = (currentDate.Year) - (dob.Year);
+            model.Age = age;
+
+
             return new Cyber
             {
 
@@ -112,18 +109,20 @@ namespace CyberAcademy1.Models
                 Address = model.Address,
                 ClassOfDigree = model.ClassOfDigree,
                 Contact = model.Contact,
-            
+                Qualification = model.Qualification,
+                  Grade = model.Grade,
                 DateOfBirth = model.DateOfBirth,
                 Email = model.Email,
                 Gender = model.Gender,
                 NYSC_upload = model.NYSC_upload,
+                Age=model.Age,
                 //SchoolAttended = model.SchoolAttended,
                 //State = model.State,
                 YearOfGraduation = model.YearOfGraduation,
                 CreatedDate = DateTime.Now,
                 CreatedBy = model.CreatedBy,
-                 NYSCFileName = model.NYSCFileName
-           
+                NYSCFileName = model.NYSCFileName
+
 
             };
         }
@@ -131,8 +130,8 @@ namespace CyberAcademy1.Models
         public Cyber Edit(Cyber entity, CyberModel model)
         {
             entity.CyberId = model.CyberId;
-      
-          
+
+
             entity.CourseId = model.CourseId;
             entity.StateId = model.StateId;
             entity.HigherId = model.HigherId;
@@ -148,19 +147,21 @@ namespace CyberAcademy1.Models
             entity.Gender = model.Gender;
 
             entity.Address = model.Address;
-     
+
             entity.ModifiedDate = DateTime.Now;
             entity.ModifiedBy = model.ModifiedBy;
 
             return entity;
         }
 
-        public virtual IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
-        {
-            if ((DateTime.Now.Year - DateOfBirth.Year) <= 18 &&( DateTime.Now.Year - DateOfBirth.Year) > 28 )
-                return new[]
-                { new ValidationResult("Date of Birth must be above 18 years and not more than 28 years of age", new[] { "DateOfBirth" }) };
-            else return base.Validate(validationContext);
+            public override IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+            {
+                if ((DateTime.Now.Year - DateOfBirth.Year) <= 18 || (DateTime.Now.Year - DateOfBirth.Year) > 28)
+                    return new[] 
+                    {
+                        new ValidationResult("Date of Birth must be above 18 years and not more than 28 years of age", new[] { "DateOfBirth" })
+                    };
+                else return base.Validate(validationContext);
+            }
         }
     }
-}

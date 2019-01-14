@@ -14,7 +14,7 @@ using System.Web.Mvc;
 
 namespace CyberAcademy1.Controllers
 {
-    [Authorize]
+//    [Authorize]
     public class CyberController : Controller
     {
         private ICyberManager _cybMgr;
@@ -48,15 +48,7 @@ namespace CyberAcademy1.Controllers
 
         }
         //[Authorize(Roles = "Admin")]
-        [HttpGet]
-        public ActionResult CreateCyber()
-        {
-            ViewBag.higher_inst = new SelectList(_cybMgr.GetHigher_Insts().Result, "HigherId", "Instit_Name");
-            ViewBag.courseOfdies = new SelectList(_cybMgr.GetCourseOfdies().Result, "CourseId", "Course_Name");
-            ViewBag.states = new SelectList(_cybMgr.GetStates().Result, "StateId", "State_Name");
-            return View();
-        }
-
+       
 
 
 
@@ -89,20 +81,15 @@ namespace CyberAcademy1.Controllers
                 );
         }
 
-        //}
-        //public ActionResult Pdf(int id)
-        //{
-        //    var file = _cybMgr.GetCyberById(id);
 
-        //    var viewAsPdf = new ViewAsPdf("Index", file)
-
-        //    {
-        //        FileName = "StaffProject.pdf"
-        //    };
-
-        //    return viewAsPdf;
-        //}
-
+        [HttpGet]
+        public ActionResult CreateCyber()
+        {
+            ViewBag.higher_inst = new SelectList(_cybMgr.GetHigher_Insts().Result, "HigherId", "Instit_Name");
+            ViewBag.courseOfdies = new SelectList(_cybMgr.GetCourseOfdies().Result, "CourseId", "Course_Name");
+            ViewBag.states = new SelectList(_cybMgr.GetStates().Result, "StateId", "State_Name");
+            return View();
+        }
 
         //[Authorize(Roles = "Admin")]
         [HttpPost]
@@ -113,6 +100,13 @@ namespace CyberAcademy1.Controllers
                     ViewBag.states = new SelectList(_cybMgr.GetStates().Result, "StateId", "State_Name");
 
             var cyberModel = new Operation<CyberModel>();
+            int age = 0;
+            DateTime currentDate = DateTime.Now;
+            DateTime dob = Convert.ToDateTime(model.DateOfBirth);
+            age = (currentDate.Year) - (dob.Year);
+            model.Age
+                = age;
+
             if (ModelState.IsValid)
             {
                 try
@@ -140,29 +134,26 @@ namespace CyberAcademy1.Controllers
                        
                     }
 
-
                     int cyberId = 0;
                     model.CreatedBy = User.Identity.GetUserName();
                     model.NYSCFileName = FileName;
                     model.ContentType = file.ContentType;
-                    var result = _cybMgr.CreateCyber(model,  ref  cyberId);
-
+                    var result = _cybMgr.CreateCyber(model, ref cyberId);
 
                     if (file.ContentLength > 0)
-                    {
-                        
-                        
+                    {                        
                         var path = Path.Combine(Server.MapPath("~/uploads"), cyberId + "_" + FileName);
                         file.SaveAs(path);
                     }
-
-
+            
                     cyberModel.Succeeded = true;
 
                     if (cyberModel.Succeeded == true)
                     {
-                        TempData["message"] = $" application{ model.CyberId} was successfully added";
-                        return RedirectToAction("Index");
+                        ModelState.Clear();
+                        ViewBag.Message = $" application{ ""} was successfully";
+                        return View();
+                      //  return RedirectToAction("Index");
                     }
                     //ModelState.AddModelError(string.Empty, result.Message);
                     //ViewBag.Error = $"Error occured : {result.Message}";
@@ -176,8 +167,6 @@ namespace CyberAcademy1.Controllers
             return View(model);
 
         }
-
-
         public ActionResult Export()
         {
             //ViewBag.Profile = context.Cybers.ToList();
@@ -196,10 +185,12 @@ namespace CyberAcademy1.Controllers
             ws.Cells["H1"].Value = "Higher";
             ws.Cells["I1"].Value = "Course";
             ws.Cells["J1"].Value = "ClassOfDigree";
-            ws.Cells["K1"].Value = "YearOfGraduation";
-            ws.Cells["L1"].Value = "NYSCCertificate";
-            ws.Cells["M1"].Value = "State";
-            ws.Cells["N1"].Value = "Contact";
+            ws.Cells["k1"].Value = "Qualification";
+            ws.Cells["L1"].Value = "YearOfGraduation";
+            ws.Cells["M1"].Value = "NYSCCertificate";
+            ws.Cells["N1"].Value = "Age";
+            ws.Cells["O1"].Value = "State";
+            ws.Cells["P1"].Value = "Contact";
           
       
 
@@ -219,10 +210,12 @@ namespace CyberAcademy1.Controllers
                 ws.Cells[string.Format("H{0}", rowStart)].Value = item.HigherInstitution.Instit_Name;
                 ws.Cells[string.Format("I{0}", rowStart)].Value = item.Course.Course_Name;
                 ws.Cells[string.Format("J{0}", rowStart)].Value = item.ClassOfDigree;
-                ws.Cells[string.Format("K{0}", rowStart)].Value = item.YearOfGraduation;
-                ws.Cells[string.Format("L{0}", rowStart)].Value = item.NYSC_upload;
-                ws.Cells[string.Format("M{0}", rowStart)].Value = item.State.State_Name;
-                ws.Cells[string.Format("N{0}", rowStart)].Value = item.Contact;
+                ws.Cells[string.Format("K{0}", rowStart)].Value = item.Qualification;
+                ws.Cells[string.Format("L{0}", rowStart)].Value = item.YearOfGraduation;
+                ws.Cells[string.Format("M{0}", rowStart)].Value = item.NYSC_upload;
+                ws.Cells[string.Format("N{0}", rowStart)].Value = item.Age;
+                ws.Cells[string.Format("O{0}", rowStart)].Value = item.State.State_Name;
+                ws.Cells[string.Format("P{0}", rowStart)].Value = item.Contact;
            
           
 

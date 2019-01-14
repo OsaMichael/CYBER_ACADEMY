@@ -237,6 +237,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StateController.cs" />
+    <Compile Include="Entities\AlertifyMessages.cs" />
     <Compile Include="Entities\CourseOfStudy.cs" />
     <Compile Include="Entities\Cyber.cs" />
     <Compile Include="Entities\EntityRepository.cs" />
@@ -250,37 +251,13 @@
     <Compile Include="Interface\ICyberManager.cs" />
     <Compile Include="Interface\IDataRepository.cs" />
     <Compile Include="Manager\CyberManager.cs" />
-    <Compile Include="Migrations\201901100003059_initial.cs" />
-    <Compile Include="Migrations\201901100003059_initial.Designer.cs">
-      <DependentUpon>201901100003059_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201901141406398_addinitial.cs" />
+    <Compile Include="Migrations\201901141406398_addinitial.Designer.cs">
+      <DependentUpon>201901141406398_addinitial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201901100126466_addd.cs" />
-    <Compile Include="Migrations\201901100126466_addd.Designer.cs">
-      <DependentUpon>201901100126466_addd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901100441381_gggggggggggg.cs" />
-    <Compile Include="Migrations\201901100441381_gggggggggggg.Designer.cs">
-      <DependentUpon>201901100441381_gggggggggggg.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901101026098_ggggggggggggpppppp.cs" />
-    <Compile Include="Migrations\201901101026098_ggggggggggggpppppp.Designer.cs">
-      <DependentUpon>201901101026098_ggggggggggggpppppp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901101043142_ggggggggggggppppppp.cs" />
-    <Compile Include="Migrations\201901101043142_ggggggggggggppppppp.Designer.cs">
-      <DependentUpon>201901101043142_ggggggggggggppppppp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901111107574_adddddneww.cs" />
-    <Compile Include="Migrations\201901111107574_adddddneww.Designer.cs">
-      <DependentUpon>201901111107574_adddddneww.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901111139002_adddddnewwlllll.cs" />
-    <Compile Include="Migrations\201901111139002_adddddnewwlllll.Designer.cs">
-      <DependentUpon>201901111139002_adddddnewwlllll.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901111213515_ttttttttt.cs" />
-    <Compile Include="Migrations\201901111213515_ttttttttt.Designer.cs">
-      <DependentUpon>201901111213515_ttttttttt.cs</DependentUpon>
+    <Compile Include="Migrations\201901141416160_addRequierd.cs" />
+    <Compile Include="Migrations\201901141416160_addRequierd.Designer.cs">
+      <DependentUpon>201901141416160_addRequierd.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -335,6 +312,15 @@
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
     <Content Include="App_Browsers\qt.browser" />
+    <None Include="Properties\PublishProfiles\cybb2.pubxml" />
+    <None Include="Properties\PublishProfiles\Cyber.pubxml" />
+    <None Include="Properties\PublishProfiles\CYBER9.pubxml" />
+    <None Include="Properties\PublishProfiles\CYBERACADEMY.pubxml" />
+    <None Include="Properties\PublishProfiles\CyberACAPP.pubxml" />
+    <None Include="Properties\PublishProfiles\cyber_2last.pubxml" />
+    <None Include="Properties\PublishProfiles\Cyber_academy.pubxml" />
+    <None Include="Properties\PublishProfiles\cyber_todyy.pubxml" />
+    <None Include="Properties\PublishProfiles\LASTACADEMY.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -407,29 +393,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201901100003059_initial.resx">
-      <DependentUpon>201901100003059_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901141406398_addinitial.resx">
+      <DependentUpon>201901141406398_addinitial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901100126466_addd.resx">
-      <DependentUpon>201901100126466_addd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901100441381_gggggggggggg.resx">
-      <DependentUpon>201901100441381_gggggggggggg.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901101026098_ggggggggggggpppppp.resx">
-      <DependentUpon>201901101026098_ggggggggggggpppppp.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901101043142_ggggggggggggppppppp.resx">
-      <DependentUpon>201901101043142_ggggggggggggppppppp.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901111107574_adddddneww.resx">
-      <DependentUpon>201901111107574_adddddneww.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901111139002_adddddnewwlllll.resx">
-      <DependentUpon>201901111139002_adddddnewwlllll.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901111213515_ttttttttt.resx">
-      <DependentUpon>201901111213515_ttttttttt.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901141416160_addRequierd.resx">
+      <DependentUpon>201901141416160_addRequierd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

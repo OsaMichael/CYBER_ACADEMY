@@ -1,0 +1,17 @@
+﻿
+@model CyberAcademy1.Models.CyberModel
+
+
+@{
+    string filepath = "";
+    filepath = @Model.CyberId + "" + @Model.NYSCFileName;
+    <tr id=@Model.CyberId>
+        <td>
+
+            <img src=filepath alt="test" />
+        </td>
+
+
+    </tr>
+
+}

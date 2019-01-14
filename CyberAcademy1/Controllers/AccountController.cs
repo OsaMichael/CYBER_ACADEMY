@@ -13,7 +13,7 @@ using System.Web.Security;
 
 namespace CyberAcademy1.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -65,8 +65,8 @@ namespace CyberAcademy1.Controllers
         //
         // POST: /Account/Login
         [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
@@ -80,7 +80,20 @@ namespace CyberAcademy1.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+
+                    var user = UserManager.FindByEmailAsync(model.Email);
+                    var role = UserManager.GetRoles(user.Result.Id).FirstOrDefault();
+
+                    if (role == "Admin")
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+
+                        return RedirectToAction("CreateCyber", "Cyber");
+
+
+                //return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:

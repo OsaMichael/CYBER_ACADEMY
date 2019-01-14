@@ -27,14 +27,15 @@ namespace CyberAcademy1.Entities
         public string YearOfGraduation { get; set; }
         public string NYSC_upload { get; set; }
         public string Email { get; set; }
- 
+        public string Qualification { get; set; }
+        public string Grade { get; set; }
         public string Contact { get; set; }
         public DateTime? CreatedDate { get; set; }
         public string CreatedBy { get; set; }
         public string ModifiedBy { get; set; }
         public DateTime? ModifiedDate { get; set; }
         public string NYSCFileName { get; set; }
-   
+    public int Age { get; set; }
         public string ContentType { get; set; }
         public virtual HigherInstitution HigherInstitution { get; set; }
         public virtual CourseOfStudy Course { get; set; }

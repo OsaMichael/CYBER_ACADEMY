@@ -19,5 +19,6 @@ namespace CyberAcademy1.Interface
         int CreateHigherInstituion(string name);
 
         int CreateCourse(string name);
+
     }
 }

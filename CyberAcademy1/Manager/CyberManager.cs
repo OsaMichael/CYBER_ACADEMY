@@ -3,6 +3,7 @@ using CyberAcademy1.Interface;
 using CyberAcademy1.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -22,6 +23,8 @@ namespace CyberAcademy1.Manager
             //{
 
                 model.Validate();
+                //var valid = model.Validate(new ValidationContext(this, serviceProvider: null, items: null));
+               // if (valid.Any()) throw new Exception(valid.FirstOrDefault().ToString());
                 var isExist = _context.Cybers.Where(e => e.Email == model.Email).FirstOrDefault();
                 if (isExist != null) throw new Exception("email already exist");
 
@@ -36,6 +39,8 @@ namespace CyberAcademy1.Manager
                 return true;
             //});
         }
+
+
 
         //public Operation UpdateCyber(CyberModel model)
         //{
