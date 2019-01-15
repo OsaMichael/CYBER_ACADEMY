@@ -285,6 +285,18 @@
     <Content Include="Content\Site.css" />
     <Content Include="Images\12.jpg" />
     <Content Include="Images\8.jpg" />
+    <Content Include="Images\Cyberspace.png" />
+    <Content Include="Images\cybSoft.png" />
+    <Content Include="pages\css\jquery-ui.css" />
+    <Content Include="pages\css\style.css" />
+    <Content Include="pages\css\wickedpicker.css" />
+    <Content Include="pages\fonts\fontello.svg" />
+    <Content Include="pages\images\cal.png" />
+    <Content Include="pages\images\cal1.png" />
+    <Content Include="pages\images\m4.jpg" />
+    <Content Include="pages\js\jquery-2.1.4.min.js" />
+    <Content Include="pages\js\jquery-ui.js" />
+    <Content Include="pages\js\wickedpicker.js" />
     <Content Include="Rotativa\help-wkhtmltoimage.txt" />
     <Content Include="Rotativa\help-wkhtmltopdf.txt" />
     <Content Include="Rotativa\wkhtmltoimage.exe" />
@@ -312,6 +324,9 @@
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
     <Content Include="App_Browsers\qt.browser" />
+    <Content Include="pages\fonts\fontello.eot" />
+    <Content Include="pages\fonts\fontello.ttf" />
+    <Content Include="pages\fonts\fontello.woff" />
     <None Include="Properties\PublishProfiles\cybb2.pubxml" />
     <None Include="Properties\PublishProfiles\Cyber.pubxml" />
     <None Include="Properties\PublishProfiles\CYBER9.pubxml" />
@@ -321,6 +336,7 @@
     <None Include="Properties\PublishProfiles\Cyber_academy.pubxml" />
     <None Include="Properties\PublishProfiles\cyber_todyy.pubxml" />
     <None Include="Properties\PublishProfiles\LASTACADEMY.pubxml" />
+    <None Include="Properties\PublishProfiles\lastCyber_Academy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -370,7 +386,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Cyber\Index.cshtml" />
-    <Content Include="Views\Cyber\CreateCyber.cshtml" />
     <Content Include="Views\Cyber\DeleteCyber.cshtml" />
     <Content Include="Views\CourseOfStudy\Index.cshtml" />
     <Content Include="Views\HigherInstitution\Index.cshtml" />
@@ -378,6 +393,7 @@
     <Content Include="Views\Shared\_viewimage.cshtml" />
     <Content Include="Views\Shared\Preview.cshtml" />
     <Content Include="Views\Shared\PreviewDocument.cshtml" />
+    <Content Include="Views\Cyber\CreateCyber.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

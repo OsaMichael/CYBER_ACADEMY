@@ -212,7 +212,7 @@ namespace CyberAcademy1.Controllers
                 ws.Cells[string.Format("J{0}", rowStart)].Value = item.ClassOfDigree;
                 ws.Cells[string.Format("K{0}", rowStart)].Value = item.Qualification;
                 ws.Cells[string.Format("L{0}", rowStart)].Value = item.YearOfGraduation;
-                ws.Cells[string.Format("M{0}", rowStart)].Value = item.NYSC_upload;
+                ws.Cells[string.Format("M{0}", rowStart)].Value = item.NYSCFileName.ToString();
                 ws.Cells[string.Format("N{0}", rowStart)].Value = item.Age;
                 ws.Cells[string.Format("O{0}", rowStart)].Value = item.State.State_Name;
                 ws.Cells[string.Format("P{0}", rowStart)].Value = item.Contact;

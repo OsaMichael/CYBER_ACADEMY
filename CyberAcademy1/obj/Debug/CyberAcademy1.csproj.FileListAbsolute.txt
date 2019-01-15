@@ -94,3 +94,4 @@ C:\Users\Michael\Documents\Visual Studio 2015\Projects\CyberAcademy1\CyberAcadem
 C:\Users\Michael\Documents\Visual Studio 2015\Projects\CyberAcademy1\CyberAcademy1\obj\Debug\CyberAcademy1.Migrations.addinitial.resources
 C:\Users\Michael\Documents\Visual Studio 2015\Projects\CyberAcademy1\CyberAcademy1\obj\Debug\CyberAcademy1.csproj.GenerateResource.Cache
 C:\Users\Michael\Documents\Visual Studio 2015\Projects\CyberAcademy1\CyberAcademy1\obj\Debug\CyberAcademy1.Migrations.addRequierd.resources
+C:\Users\Michael\Documents\Visual Studio 2015\Projects\CyberAcademy1\CyberAcademy1\obj\Debug\CyberAcademy1.csprojResolveAssemblyReference.cache
